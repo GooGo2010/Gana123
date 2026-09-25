@@ -160,21 +160,13 @@
             color: white;
         }
 
-        /* كتاب الألبوم */
+        /* تصميم الكتاب والألبوم المطور */
         .book-container {
             perspective: 1000px;
-            margin: 20px 0 40px 0;
-            width: 280px;
-            height: 380px;
+            margin: 20px 0 20px 0;
+            width: 300px;
+            height: 400px;
             position: relative;
-        }
-
-        .book {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.5s;
         }
 
         .book-page {
@@ -182,41 +174,63 @@
             width: 100%;
             height: 100%;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 15px;
-            backface-visibility: hidden;
-            border: 2px solid #ffe6e8;
+            padding: 20px;
+            border: 3px solid #ffd1dc;
         }
 
-        .book-page img {
-            width: 100%;
-            height: 85%;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
+        /* غلاف الألبوم الخارجي الفخم */
         .book-cover {
-            background: linear-gradient(135deg, #d63384, #ff416c);
+            background: linear-gradient(145deg, #ff416c, #8a2387);
             color: white;
             cursor: pointer;
             z-index: 10;
             text-align: center;
+            border: 6px double #ffd700;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .book-cover:hover {
+            transform: scale(1.03);
         }
 
         .book-cover h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* إطار الصور الاحترافي بالداخل */
+        .photo-frame {
+            width: 100%;
+            height: 85%;
+            padding: 10px;
+            background: #fff;
+            border: 4px dashed #ff7eb3;
+            border-radius: 12px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
         }
 
         .book-controls {
             display: flex;
             gap: 15px;
-            margin-top: 15px;
+            margin-bottom: 40px;
             justify-content: center;
         }
 
@@ -224,37 +238,57 @@
             background: #d63384;
             color: white;
             border: none;
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
-        /* الرسالة الختامية */
-        .final-message-container {
-            background: rgba(255, 255, 255, 0.9);
+        /* قسم الرسالة الختامية المغلقة */
+        .final-message-box {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+
+        .trigger-btn {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            padding: 18px 25px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(255, 65, 108, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .trigger-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .final-text-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
             padding: 25px;
             border-radius: 20px;
             text-align: center;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-top: 15px;
             border: 2px dashed #ff7eb3;
-        }
-
-        .final-title {
-            color: #d63384;
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .final-text {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             line-height: 1.8;
             color: #4a4a4a;
             font-weight: bold;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         audio {
@@ -300,36 +334,45 @@
             <div class="card hidden-text" onclick="revealCard(this, 'بحبككك ي جوجو❣️❤️')">اضغطي هنا لتفتحي الكارت الخامس ✨</div>
         </div>
 
-        <!-- ألبوم الصور (الكتاب) -->
+        <!-- ألبوم الصور (الكتاب المزخرف) -->
         <div class="book-container">
-            <!-- الغلاف -->
+            <!-- غلاف الألبوم الجذاب -->
             <div class="book-page book-cover" id="book-cover" onclick="openBook()">
-                <h3>📖 ألبوم صورنا 📖</h3>
-                <p>اضغطي هنا علشان تفتحي الألبوم ❤️</p>
+                <div style="font-size: 2.5rem; margin-bottom: 10px;">💖✨💖</div>
+                <h3>ألبوم ذكرياتنا</h3>
+                <p style="margin-top: 10px; font-size: 0.95rem;">اضغطي هنا عشان تفتحي الألبوم يا جوجو 📖</p>
             </div>
 
-            <!-- صفحة 1 -->
+            <!-- صفحة 1 مع إطار برّاق -->
             <div class="book-page" id="page-1" style="display: none;">
-                <img src="IMG_3350.jpeg" alt="صورة 1">
-                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 1</p>
+                <div class="photo-frame">
+                    <img src="IMG_3350.jpeg" alt="صورة 1">
+                </div>
+                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 1 ❤️</p>
             </div>
 
-            <!-- صفحة 2 -->
+            <!-- صفحة 2 مع إطار برّاق -->
             <div class="book-page" id="page-2" style="display: none;">
-                <img src="IMG_3353.jpeg" alt="صورة 2">
-                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 2</p>
+                <div class="photo-frame">
+                    <img src="IMG_3353.jpeg" alt="صورة 2">
+                </div>
+                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 2 ❤️</p>
             </div>
 
-            <!-- صفحة 3 -->
+            <!-- صفحة 3 مع إطار برّاق -->
             <div class="book-page" id="page-3" style="display: none;">
-                <img src="IMG_3354.jpeg" alt="صورة 3">
-                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 3</p>
+                <div class="photo-frame">
+                    <img src="IMG_3354.jpeg" alt="صورة 3">
+                </div>
+                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 3 ❤️</p>
             </div>
 
-            <!-- صفحة 4 -->
+            <!-- صفحة 4 مع إطار برّاق -->
             <div class="book-page" id="page-4" style="display: none;">
-                <img src="IMG_3355.jpeg" alt="صورة 4">
-                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 4</p>
+                <div class="photo-frame">
+                    <img src="IMG_3355.jpeg" alt="صورة 4">
+                </div>
+                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 4 ❤️</p>
             </div>
         </div>
 
@@ -339,12 +382,14 @@
             <button class="book-btn" onclick="nextPage()">التالية ➡️</button>
         </div>
 
-        <!-- الرسالة الختامية -->
-        <div class="final-message-container">
-            <div class="final-title">افتحي الرساله دي ي جوجو 👇</div>
-            <div class="final-text">
+        <!-- الرسالة الختامية المغلقة تفاعلياً -->
+        <div class="final-message-box">
+            <div class="trigger-btn" id="msg-trigger" onclick="openFinalMessage()">
+                افتحي الرساله دي ي جوجو 💌
+            </div>
+            <div class="final-text-content" id="final-text">
                 بحبككككككك قد الدنيا كلها ي روحي وحبي ليكي ما يتوصفش وربنا وممكن اكون بزعلك كتير بس مقدرش ع ازعلك ولا اقدر ابعد عنك<br>
-                <strong>بحبككككككك ❤️✨</strong>
+                <span style="color: #d63384; font-size: 1.3rem; display: block; margin-top: 10px;">بحبككككككك ❤️✨</span>
             </div>
         </div>
 
@@ -420,6 +465,20 @@
             if (currentPage > 1) {
                 currentPage--;
                 showPage(currentPage);
+            }
+        }
+
+        // فتح الرسالة الأخيرة عند الضغط عليها
+        function openFinalMessage() {
+            const content = document.getElementById('final-text');
+            const btn = document.getElementById('msg-trigger');
+            
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                btn.innerText = 'افتحي الرساله دي ي جوجو 💌';
+            } else {
+                content.style.display = 'block';
+                btn.innerText = 'إغلاق الرسالة 💕';
             }
         }
     </script>
