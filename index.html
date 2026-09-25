@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إلى جوجو ❤️</title>
+    <title>Mahmoud & Gana ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Dancing+Script:wght@700&display=swap');
 
         * {
             box-sizing: border-box;
@@ -15,67 +15,90 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%);
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 20px 15px;
             color: #4a4a4a;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* خلفية القلوب المنجرفة */
+        .floating-heart-bg {
+            position: fixed;
+            top: -10%;
+            font-size: 20px;
+            color: rgba(255, 105, 180, 0.4);
+            animation: floatUp 8s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) scale(0.8) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
 
         /* شاشة كلمة السر */
         #login-screen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 192, 203, 0.95);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(255, 182, 193, 0.95);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
 
         .login-box {
             background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(214, 51, 132, 0.2);
             text-align: center;
             max-width: 90%;
-            width: 350px;
+            width: 360px;
+            border: 2px solid #ffb6c1;
         }
 
         .login-box h2 {
-            color: #ff4b2b;
+            color: #d63384;
             margin-bottom: 20px;
+            font-size: 1.4rem;
         }
 
         .login-box input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
+            padding: 12px 15px;
+            margin-bottom: 18px;
             border: 2px solid #ffb6c1;
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
             font-size: 16px;
             outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .login-box input:focus {
+            border-color: #d63384;
         }
 
         .login-box button {
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 10px;
+            padding: 12px 35px;
+            border-radius: 20px;
             font-size: 16px;
             cursor: pointer;
             font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.3);
             transition: transform 0.2s;
         }
 
@@ -87,35 +110,39 @@
         #main-content {
             display: none;
             width: 100%;
-            max-width: 800px;
+            max-width: 600px;
             flex-direction: column;
             align-items: center;
+            z-index: 1;
         }
 
-        /* العنوان المتردد/النابض */
+        /* العنوان النابض */
         .beating-title {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             color: #d63384;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            margin: 20px 0;
-            animation: pulse 1.2s infinite alternate;
+            text-shadow: 2px 2px 8px rgba(214, 51, 132, 0.2);
+            margin: 15px 0 25px 0;
+            animation: pulseTitle 1.2s infinite alternate;
             text-align: center;
             font-weight: 900;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
+        @keyframes pulseTitle {
+            0% { transform: scale(1); text-shadow: 0 0 5px rgba(214,51,132,0.2); }
+            100% { transform: scale(1.12); text-shadow: 0 0 15px rgba(214,51,132,0.6); }
         }
 
         /* العداد التنازلي */
         .timer-container {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             padding: 15px 25px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 20px;
+            margin-bottom: 35px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
             text-align: center;
+            border: 2px solid #ffe6e8;
+            width: 100%;
+            max-width: 420px;
         }
 
         .timer-title {
@@ -125,96 +152,152 @@
         }
 
         .timer-display {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: bold;
             color: #333;
             direction: ltr;
         }
 
-        /* قسم الكروت */
-        .cards-container {
+        /* تصميم كروت الظروف الرومانسية */
+        .envelopes-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             margin-bottom: 40px;
         }
 
-        .card {
-            background: white;
-            padding: 18px;
-            border-radius: 12px;
+        .envelope-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(214, 51, 132, 0.12);
+            border: 2px solid #ffd1dc;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
             text-align: center;
+        }
+
+        .envelope-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(214, 51, 132, 0.2);
+        }
+
+        .envelope-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #d63384;
             font-weight: bold;
             font-size: 1.1rem;
-            color: #ff4b2b;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            user-select: none;
-            transition: all 0.3s ease;
         }
 
-        .card.hidden-text {
-            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-            color: white;
+        .beating-heart-icon {
+            display: inline-block;
+            animation: heartPulse 1s infinite alternate;
+            color: #ff416c;
         }
 
-        /* تصميم الكتاب والألبوم المطور */
+        @keyframes heartPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.3); }
+        }
+
+        .envelope-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.3s ease;
+            color: #e6005c;
+            font-weight: bold;
+            font-size: 1.15rem;
+        }
+
+        .envelope-card.open .envelope-content {
+            max-height: 100px;
+            opacity: 1;
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px cubic-bezier(0.1, 0.7, 0.1, 1) #ffe0e6;
+        }
+
+        /* تصميم ألبوم الصور (الكتاب) */
+        .album-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
         .book-container {
-            perspective: 1000px;
-            margin: 20px 0 20px 0;
-            width: 300px;
-            height: 400px;
+            width: 310px;
+            height: 410px;
             position: relative;
+            perspective: 1000px;
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #800020, #b3003b);
+            border-radius: 18px;
+            border: 5px double #ffd700;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.4s;
+        }
+
+        .book-cover:hover {
+            transform: scale(1.02) rotate(-1deg);
+        }
+
+        .names-title {
+            font-family: 'Dancing Script', 'Cairo', cursive;
+            font-size: 2.2rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+            margin: 15px 0 5px 0;
+            direction: ltr;
         }
 
         .book-page {
-            position: absolute;
             width: 100%;
             height: 100%;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            border: 3px solid #ffd1dc;
+            border: 3px solid #ffccd5;
+            position: absolute;
+            top: 0; left: 0;
         }
 
-        /* غلاف الألبوم الخارجي الفخم */
-        .book-cover {
-            background: linear-gradient(145deg, #ff416c, #8a2387);
-            color: white;
-            cursor: pointer;
-            z-index: 10;
-            text-align: center;
-            border: 6px double #ffd700;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-
-        .book-cover:hover {
-            transform: scale(1.03);
-        }
-
-        .book-cover h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        /* إطار الصور الاحترافي بالداخل */
+        /* إطار الصور المزخرف بالقلوب */
         .photo-frame {
             width: 100%;
-            height: 85%;
-            padding: 10px;
+            height: 82%;
+            padding: 12px;
             background: #fff;
-            border: 4px dashed #ff7eb3;
-            border-radius: 12px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+            border: 3px solid #ff7eb3;
+            border-radius: 15px;
+            box-shadow: inset 0 0 12px rgba(255, 182, 193, 0.4), 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -224,99 +307,128 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 10px;
         }
+
+        /* القلوب حول الإطار */
+        .frame-heart {
+            position: absolute;
+            color: #ff416c;
+            font-size: 18px;
+            animation: heartPulse 1.2s infinite alternate;
+        }
+
+        .fh-top-left { top: -10px; left: -10px; }
+        .fh-top-right { top: -10px; right: -10px; }
+        .fh-bottom-left { bottom: -10px; left: -10px; }
+        .fh-bottom-right { bottom: -10px; right: -10px; }
 
         .book-controls {
             display: flex;
             gap: 15px;
-            margin-bottom: 40px;
-            justify-content: center;
+            margin-top: 20px;
         }
 
         .book-btn {
-            background: #d63384;
+            background: linear-gradient(135deg, #d63384, #ff416c);
             color: white;
             border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
+            padding: 10px 24px;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(214, 51, 132, 0.3);
+            transition: transform 0.2s;
         }
 
-        /* قسم الرسالة الختامية المغلقة */
-        .final-message-box {
+        .book-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* قسم الرسالة الختامية التفاعلية */
+        .final-message-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
             margin-top: 10px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
-        .trigger-btn {
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        .letter-trigger-btn {
+            background: linear-gradient(135deg, #ff416c, #d63384);
             color: white;
             padding: 18px 25px;
-            border-radius: 15px;
+            border-radius: 20px;
             text-align: center;
             font-weight: bold;
             font-size: 1.2rem;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(255, 65, 108, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 65, 108, 0.35);
             transition: all 0.3s ease;
+            border: 2px solid #fff;
         }
 
-        .trigger-btn:hover {
-            transform: scale(1.02);
+        .letter-trigger-btn:hover {
+            transform: translateY(-2px);
         }
 
-        .final-text-content {
+        .letter-paper {
             display: none;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
+            background: #fffdfa;
+            padding: 30px 25px;
             border-radius: 20px;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            margin-top: 15px;
-            border: 2px dashed #ff7eb3;
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: #4a4a4a;
-            font-weight: bold;
-            animation: fadeIn 0.5s ease-in;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border: 2px dashed #ff9a9e;
+            position: relative;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .typed-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #333;
+            font-weight: 700;
+            white-space: pre-line;
         }
 
-        audio {
-            display: none;
-        }
+        audio { display: none; }
     </style>
 </head>
 <body>
+
+    <!-- تشغيل القلوب في الخلفية -->
+    <script>
+        for (let i = 0; i < 15; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'floating-heart-bg';
+            heart.innerText = ['❤️', '💖', '💕', '💗'][Math.floor(Math.random() * 4)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (6 + Math.random() * 6) + 's';
+            heart.style.animationDelay = (Math.random() * 5) + 's';
+            document.body.appendChild(heart);
+        }
+    </script>
 
     <!-- مشغل الصوت الخفي -->
     <audio id="bg-music" loop>
         <source src="song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- شاشة إدخال كلمة السر -->
+    <!-- شاشة كلمة السر -->
     <div id="login-screen">
         <div class="login-box">
             <h2>اكتبي كلمة السر يا جوجو ❤️</h2>
             <input type="password" id="password-input" placeholder="أدخلي كلمة السر...">
             <button onclick="checkPassword()">دخول ✨</button>
-            <p id="error-msg" style="color: red; margin-top: 10px; display: none;">كلمة السر مش صحيحة! 😉</p>
+            <p id="error-msg" style="color: red; margin-top: 12px; display: none; font-size: 0.9rem;">كلمة السر مش صحيحة! 😉</p>
         </div>
     </div>
 
     <!-- المحتوى الرئيسي -->
     <div id="main-content">
         
-        <!-- العنوان المتردد -->
+        <!-- العنوان النابض -->
         <h1 class="beating-title">بحبكك ي جوجو❣️</h1>
 
         <!-- العداد التنازلي -->
@@ -325,84 +437,135 @@
             <div class="timer-display" id="countdown">جاري الحساب...</div>
         </div>
 
-        <!-- الكروت التفاعلية -->
-        <div class="cards-container">
-            <div class="card hidden-text" onclick="revealCard(this, 'عايز اقولك علي حاجه😍😂')">اضغطي هنا لتفتحي الكارت الأول ✨</div>
-            <div class="card hidden-text" onclick="revealCard(this, 'لا م هقولك 😂😂')">اضغطي هنا لتفتحي الكارت الثاني ✨</div>
-            <div class="card hidden-text" onclick="revealCard(this, 'م هقولك برضو😂😂')">اضغطي هنا لتفتحي الكارت الثالث ✨</div>
-            <div class="card hidden-text" onclick="revealCard(this, 'خلاص هقولك😂😂')">اضغطي هنا لتفتحي الكارت الرابع ✨</div>
-            <div class="card hidden-text" onclick="revealCard(this, 'بحبككك ي جوجو❣️❤️')">اضغطي هنا لتفتحي الكارت الخامس ✨</div>
-        </div>
-
-        <!-- ألبوم الصور (الكتاب المزخرف) -->
-        <div class="book-container">
-            <!-- غلاف الألبوم الجذاب -->
-            <div class="book-page book-cover" id="book-cover" onclick="openBook()">
-                <div style="font-size: 2.5rem; margin-bottom: 10px;">💖✨💖</div>
-                <h3>ألبوم ذكرياتنا</h3>
-                <p style="margin-top: 10px; font-size: 0.95rem;">اضغطي هنا عشان تفتحي الألبوم يا جوجو 📖</p>
+        <!-- كروت الظروف التفاعلية -->
+        <div class="envelopes-container">
+            <div class="envelope-card" onclick="toggleEnvelope(this)">
+                <div class="envelope-header">
+                    <span>💌 الكارت الأول</span>
+                    <span class="beating-heart-icon">❤️</span>
+                </div>
+                <div class="envelope-content">عايز اقولك علي حاجه😍😂</div>
             </div>
 
-            <!-- صفحة 1 مع إطار برّاق -->
-            <div class="book-page" id="page-1" style="display: none;">
-                <div class="photo-frame">
-                    <img src="IMG_3350.jpeg" alt="صورة 1">
+            <div class="envelope-card" onclick="toggleEnvelope(this)">
+                <div class="envelope-header">
+                    <span>💌 الكارت الثاني</span>
+                    <span class="beating-heart-icon">❤️</span>
                 </div>
-                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 1 ❤️</p>
+                <div class="envelope-content">لا م هقولك 😂😂</div>
             </div>
 
-            <!-- صفحة 2 مع إطار برّاق -->
-            <div class="book-page" id="page-2" style="display: none;">
-                <div class="photo-frame">
-                    <img src="IMG_3353.jpeg" alt="صورة 2">
+            <div class="envelope-card" onclick="toggleEnvelope(this)">
+                <div class="envelope-header">
+                    <span>💌 الكارت الثالث</span>
+                    <span class="beating-heart-icon">❤️</span>
                 </div>
-                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 2 ❤️</p>
+                <div class="envelope-content">م هقولك برضو😂😂</div>
             </div>
 
-            <!-- صفحة 3 مع إطار برّاق -->
-            <div class="book-page" id="page-3" style="display: none;">
-                <div class="photo-frame">
-                    <img src="IMG_3354.jpeg" alt="صورة 3">
+            <div class="envelope-card" onclick="toggleEnvelope(this)">
+                <div class="envelope-header">
+                    <span>💌 الكارت الرابع</span>
+                    <span class="beating-heart-icon">❤️</span>
                 </div>
-                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 3 ❤️</p>
+                <div class="envelope-content">خلاص هقولك😂😂</div>
             </div>
 
-            <!-- صفحة 4 مع إطار برّاق -->
-            <div class="book-page" id="page-4" style="display: none;">
-                <div class="photo-frame">
-                    <img src="IMG_3355.jpeg" alt="صورة 4">
+            <div class="envelope-card" onclick="toggleEnvelope(this)">
+                <div class="envelope-header">
+                    <span>💌 الكارت الخامس</span>
+                    <span class="beating-heart-icon">❤️</span>
                 </div>
-                <p style="margin-top: 8px; font-weight: bold; color: #d63384;">صفحة 4 ❤️</p>
+                <div class="envelope-content">بحبككك ي جوجو❣️❤️</div>
             </div>
         </div>
 
-        <!-- أزرار تقليب الألبوم -->
-        <div class="book-controls" id="book-controls" style="display: none;">
-            <button class="book-btn" onclick="prevPage()">السابقة ⬅️</button>
-            <button class="book-btn" onclick="nextPage()">التالية ➡️</button>
+        <!-- ألبوم الصور الكتاب -->
+        <div class="album-section">
+            <div class="book-container">
+                <!-- الغلاف -->
+                <div class="book-cover" id="book-cover" onclick="openBook()">
+                    <div style="font-size: 3rem; animation: heartPulse 1s infinite alternate;">💖</div>
+                    <div class="names-title">Mahmoud & Gana</div>
+                    <p style="margin-top: 15px; font-size: 0.95rem; opacity: 0.9;">اضغطي هنا لتفتحي الألبوم 📖</p>
+                </div>
+
+                <!-- صفحة 1 -->
+                <div class="book-page" id="page-1" style="display: none;">
+                    <div class="photo-frame">
+                        <span class="frame-heart fh-top-left">💖</span>
+                        <span class="frame-heart fh-top-right">💖</span>
+                        <span class="frame-heart fh-bottom-left">💖</span>
+                        <span class="frame-heart fh-bottom-right">💖</span>
+                        <img src="IMG_3350.jpeg" alt="صورة 1">
+                    </div>
+                    <p style="margin-top: 10px; font-weight: bold; color: #d63384;">صفحة 1 ❤️</p>
+                </div>
+
+                <!-- صفحة 2 -->
+                <div class="book-page" id="page-2" style="display: none;">
+                    <div class="photo-frame">
+                        <span class="frame-heart fh-top-left">💖</span>
+                        <span class="frame-heart fh-top-right">💖</span>
+                        <span class="frame-heart fh-bottom-left">💖</span>
+                        <span class="frame-heart fh-bottom-right">💖</span>
+                        <img src="IMG_3353.jpeg" alt="صورة 2">
+                    </div>
+                    <p style="margin-top: 10px; font-weight: bold; color: #d63384;">صفحة 2 ❤️</p>
+                </div>
+
+                <!-- صفحة 3 -->
+                <div class="book-page" id="page-3" style="display: none;">
+                    <div class="photo-frame">
+                        <span class="frame-heart fh-top-left">💖</span>
+                        <span class="frame-heart fh-top-right">💖</span>
+                        <span class="frame-heart fh-bottom-left">💖</span>
+                        <span class="frame-heart fh-bottom-right">💖</span>
+                        <img src="IMG_3354.jpeg" alt="صورة 3">
+                    </div>
+                    <p style="margin-top: 10px; font-weight: bold; color: #d63384;">صفحة 3 ❤️</p>
+                </div>
+
+                <!-- صفحة 4 -->
+                <div class="book-page" id="page-4" style="display: none;">
+                    <div class="photo-frame">
+                        <span class="frame-heart fh-top-left">💖</span>
+                        <span class="frame-heart fh-top-right">💖</span>
+                        <span class="frame-heart fh-bottom-left">💖</span>
+                        <span class="frame-heart fh-bottom-right">💖</span>
+                        <img src="IMG_3355.jpeg" alt="صورة 4">
+                    </div>
+                    <p style="margin-top: 10px; font-weight: bold; color: #d63384;">صفحة 4 ❤️</p>
+                </div>
+            </div>
+
+            <!-- أزرار تقليب الألبوم -->
+            <div class="book-controls" id="book-controls" style="display: none;">
+                <button class="book-btn" onclick="prevPage()">السابقة ⬅️</button>
+                <button class="book-btn" onclick="nextPage()">التالية ➡️</button>
+            </div>
         </div>
 
-        <!-- الرسالة الختامية المغلقة تفاعلياً -->
-        <div class="final-message-box">
-            <div class="trigger-btn" id="msg-trigger" onclick="openFinalMessage()">
+        <!-- الرسالة الختامية -->
+        <div class="final-message-container">
+            <div class="letter-trigger-btn" onclick="openLetter()">
                 افتحي الرساله دي ي جوجو 💌
             </div>
-            <div class="final-text-content" id="final-text">
-                بحبككككككك قد الدنيا كلها ي روحي وحبي ليكي ما يتوصفش وربنا وممكن اكون بزعلك كتير بس مقدرش ع ازعلك ولا اقدر ابعد عنك<br>
-                <span style="color: #d63384; font-size: 1.3rem; display: block; margin-top: 10px;">بحبككككككك ❤️✨</span>
+            <div class="letter-paper" id="letter-paper">
+                <div class="typed-text" id="typed-text"></div>
             </div>
         </div>
 
     </div>
 
     <script>
-        // التحقق من كلمة السر
+        // كلمة السر
         function checkPassword() {
             const input = document.getElementById('password-input').value;
             if (input.trim() === "بعشقكك ي جوجو") {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'flex';
-                // تشغيل الموسيقى
+                // تشغيل الأغنية
                 const music = document.getElementById('bg-music');
                 music.play().catch(e => console.log("المتصفح منع التشغيل التلقائي"));
             } else {
@@ -410,17 +573,13 @@
             }
         }
 
-        // إظهار نصوص الكروت عند الضغط
-        function revealCard(element, text) {
-            element.innerText = text;
-            element.classList.remove('hidden-text');
-            element.style.background = '#fff';
-            element.style.border = '2px solid #ff7eb3';
+        // كروت الظروف
+        function toggleEnvelope(element) {
+            element.classList.toggle('open');
         }
 
         // العداد لـ 3/8/2026
         const targetDate = new Date("August 3, 2026 00:00:00").getTime();
-        
         setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
@@ -434,7 +593,7 @@
             document.getElementById("countdown").innerHTML = prefix + days + " يوم " + hours + " ساعة " + minutes + " دقيقة " + seconds + " ثانية";
         }, 1000);
 
-        // التحكم بالألبوم
+        // تحكم الألبوم
         let currentPage = 0;
         const totalPages = 4;
 
@@ -468,18 +627,33 @@
             }
         }
 
-        // فتح الرسالة الأخيرة عند الضغط عليها
-        function openFinalMessage() {
-            const content = document.getElementById('final-text');
-            const btn = document.getElementById('msg-trigger');
+        // فتح الرسالة وكتابتها بشكل تدريجي (آلة كاتبة)
+        const fullMessage = "بحبككككككك قد الدنيا كلها ي روحي وحبي ليكي ما يتوصفش وربنا وممكن اكون بزعلك كتير بس مقدرش ع ازعلك ولا اقدر ابعد عنك\nبحبككككككك ❤️✨";
+        let isTyping = false;
+
+        function openLetter() {
+            const paper = document.getElementById('letter-paper');
+            const typedTextElement = document.getElementById('typed-text');
             
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-                btn.innerText = 'افتحي الرساله دي ي جوجو 💌';
-            } else {
-                content.style.display = 'block';
-                btn.innerText = 'إغلاق الرسالة 💕';
+            if (paper.style.display === 'block') {
+                return;
             }
+
+            paper.style.display = 'block';
+            typedTextElement.innerHTML = "";
+            let i = 0;
+            isTyping = true;
+
+            function typeWriter() {
+                if (i < fullMessage.length) {
+                    typedTextElement.innerHTML += fullMessage.charAt(i) === '\n' ? '<br>' : fullMessage.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                } else {
+                    isTyping = false;
+                }
+            }
+            typeWriter();
         }
     </script>
 </body>
